@@ -12,29 +12,42 @@ def create_file_with_strings(filename="TF15_1.txt"):
         "xyzzyx",
         "несиметричне",
     ]
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(" ".join(strings))
+    
+    try:
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(" ".join(strings))
+    except:
+        print("Error opening file!")
 
 
 def find_symmetric_words(input_filename="TF15_1.txt", output_filename="TF15_2.txt"):
     symmetric_words = []
-    with open(input_filename, "r", encoding="utf-8") as infile:
-        text = infile.read()
-        words = text.split()
-        for word in words:
-            cleaned_word = ''.join(c for c in word if c.isalnum()).lower()
-            if cleaned_word == cleaned_word[::-1] and len(cleaned_word) > 1:
-                symmetric_words.append(cleaned_word)
+    try:
+        with open(input_filename, "r", encoding="utf-8") as infile:
+            text = infile.read()
+            words = text.split()
+            for word in words:
+                cleaned_word = ''.join(c for c in word if c.isalnum()).lower()
+                if cleaned_word == cleaned_word[::-1] and len(cleaned_word) > 1:
+                    symmetric_words.append(cleaned_word)
+    except:
+        print("Error opening file!")
 
-    with open(output_filename, "w", encoding="utf-8") as outfile:
-        outfile.write(" ".join(symmetric_words))
+    try:
+        with open(output_filename, "w", encoding="utf-8") as outfile:
+            outfile.write(" ".join(symmetric_words))
+    except:
+        print("Error opening file!")
 
 
 def print_words_from_file(filename="TF15_2.txt"):
-    with open(filename, "r", encoding="utf-8") as f:
-        words = f.read().split()
-        for word in words:
-            print(word)
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            words = f.read().split()
+            for word in words:
+                print(word)
+    except:
+        print("Error opening file!")
 
 
 create_file_with_strings()
